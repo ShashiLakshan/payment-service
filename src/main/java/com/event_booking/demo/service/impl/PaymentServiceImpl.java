@@ -5,6 +5,7 @@ import com.event_booking.demo.dto.PaymentDto;
 import com.event_booking.demo.dto.PaymentEventDto;
 import com.event_booking.demo.dto.inter_service.EventDto;
 import com.event_booking.demo.entity.PaymentEntity;
+import com.event_booking.demo.enums.NotificationStatus;
 import com.event_booking.demo.exception.CustomGlobalException;
 import com.event_booking.demo.feign_client.BookingClient;
 import com.event_booking.demo.feign_client.EventClient;
@@ -57,6 +58,7 @@ public class PaymentServiceImpl implements PaymentService {
         notificationDto.setTicketType(bookingDto.getTicketType());
         notificationDto.setNoOfTickets(bookingDto.getNoOfTickets());
         notificationDto.setPayAmount(paymentEntity.getPaymentAmount());
+        notificationDto.setNotificationStatus(NotificationStatus.BOOKED);
         return notificationDto;
     }
 

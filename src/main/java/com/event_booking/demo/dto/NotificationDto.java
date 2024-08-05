@@ -1,5 +1,6 @@
 package com.event_booking.demo.dto;
 
+import com.event_booking.demo.enums.NotificationStatus;
 import com.event_booking.demo.enums.TicketType;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
@@ -17,6 +18,7 @@ public class NotificationDto implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private String eventName;
+    private Integer bookingId;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime eventDate;
@@ -26,6 +28,7 @@ public class NotificationDto implements Serializable {
     private TicketType ticketType;
     private Integer noOfTickets;
     private BigDecimal payAmount;
+    private NotificationStatus notificationStatus;
 
     @Override
     public boolean equals(Object o) {
