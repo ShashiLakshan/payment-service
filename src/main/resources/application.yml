@@ -11,3 +11,7 @@ spring:
   h2:
     console:
       enabled: true
+
+booking:
+  service:
+    url: http://localhost:8082/api/v1/bookings
