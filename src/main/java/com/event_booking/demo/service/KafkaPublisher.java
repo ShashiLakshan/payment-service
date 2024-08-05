@@ -1,5 +1,6 @@
 package com.event_booking.demo.service;
 
+import com.event_booking.demo.dto.NotificationDto;
 import com.event_booking.demo.dto.PaymentEventDto;
 import lombok.AllArgsConstructor;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -21,6 +22,17 @@ public class KafkaPublisher {
                 System.out.println("Message sent successfully " + paymentEventDto.toString());
             } else {
                 System.out.println("Error sending message " + paymentEventDto.toString() );
+            }
+        });
+    }
+
+    public void sendNotifications(String topic, NotificationDto notificationDto) {
+        CompletableFuture<SendResult<String, Object>> future = kafkaTemplate.send(topic, notificationDto);
+        future.whenComplete((result, ex) -> {
+            if (ex == null) {
+                System.out.println("Message sent successfully " + notificationDto.toString());
+            } else {
+                System.out.println("Error sending message " + notificationDto.toString() );
             }
         });
     }
